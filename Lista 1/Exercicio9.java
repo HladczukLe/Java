@@ -1,10 +1,7 @@
-package IFB.Módulo2.LDP2;
+//Escreva um programa que receba dois números inteiros e depois informe se a diferença entre os dois é maior ou menor que 10.
 
 import javax.swing.JOptionPane;
 
-/**
- * Exercicio9
- */
 public class Exercicio9 {
     public static void main(String[] args) {
         String text1 = JOptionPane.showInputDialog("Digite um número: ");
