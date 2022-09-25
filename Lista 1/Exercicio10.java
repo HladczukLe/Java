@@ -1,4 +1,4 @@
-package IFB.Módulo2.LDP2;
+//Escreva um programa que receba uma temperatura em graus Fahrenheit e a converta para graus Celsius
 
 import javax.swing.JOptionPane;
 
