@@ -1,0 +1,12 @@
+import javax.swing.JOptionPane;
+
+public class Exercise5 {
+    public static void main(String[] args) {
+        String text1 = JOptionPane.showInputDialog("Enter a number: ");
+        String text2 = JOptionPane.showInputDialog("Enter another number: ");
+        int number1 = Integer.parseInt(text1);
+        int number2 = Integer.parseInt(text2);
+        int subtraction = number1-number2;
+        System.out.println("The subtraction between " +number1+ " and " +number2+ " is: " +subtraction);
+    }
+}
