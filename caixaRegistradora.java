@@ -1,6 +1,3 @@
-package IFB.Módulo2.LDP2;
-
-
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
