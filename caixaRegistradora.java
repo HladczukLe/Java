@@ -2,20 +2,19 @@ import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
- caixaRegistradora
+ * caixaRegistradora
  */
 public class caixaRegistradora { 
 
     public static void main(String[] args) {
-        String txtContador = JOptionPane.showInputDialog("Quantos produtos vão ser passados?");
-        int contador = Integer.parseInt(txtContador);
         float soma = 0;
+        float precoProduto;
 
-        for(int i = 0; i < contador; i++) {
-            String txtPrecoProduto = JOptionPane.showInputDialog("Insira o preço do produto");
-            float precoProduto = Float.parseFloat(txtPrecoProduto);
-            soma += precoProduto; 
-        }
+        do {
+            precoProduto = Float.parseFloat(JOptionPane.showInputDialog("Insira o preço do produto ou 0 para finalizar."));
+            soma += precoProduto;
+        } while (precoProduto!=0.0);
+
         JOptionPane.showMessageDialog(null,"O valor total da compra é de R$"+new DecimalFormat("0.00").format(soma));
 
         String option [] = {"Crédito", "Cheque", "Dinheiro"}; //lista de valores para o JOptionPane.YES_NO_CANCEL_OPTION
@@ -28,17 +27,28 @@ public class caixaRegistradora {
             null,
             option, option); //lista option
 
-            if (formaPGTO == JOptionPane.YES_OPTION ) {
-                String txtParcela = JOptionPane.showInputDialog("Você pode parcelar a compra em até 10x \n Em quantas vezes gostaria de parcelar?");
-                Double parcela = Double.parseDouble(txtParcela);
+            if (formaPGTO == JOptionPane.YES_OPTION ) { //YES_OPTION = Crédito
+                Double[] options = {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0};
+                Double parcela = (Double)JOptionPane.showInputDialog(
+                    null,
+                    "Você pode parcelar a compra em até 10x \n Em quantas vezes gostaria de parcelar?",
+                    "Parcelas", 
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options, options[0]);
                 Double valorParcela = soma/parcela;
                 JOptionPane.showMessageDialog(null,"O valor de cada parcela é de R$"+new DecimalFormat("0.00").format(valorParcela)); //Cada 0 no "new DecimalFormat("0.00")" indica os números que tem que aparecer na respectiva ordem da casa decimal
-                String txtPagamento = JOptionPane.showInputDialog("Insira o valor para o pagamento");
-                Double pagamento = Double.parseDouble(txtPagamento);
+                Double pagamento = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor para o pagamento"));
                 Double troco = pagamento - valorParcela;
-                JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                if (pagamento<valorParcela) {
+                    Double troco1 = troco*(-1);
+                    JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
+                }
+                else if (pagamento>valorParcela) {
+                    JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                }
             }
-            else if (formaPGTO == JOptionPane.NO_OPTION) {
+            else if (formaPGTO == JOptionPane.NO_OPTION) { //NO_OPTION = cheque
                 String parcelamento [] = {"Parcela Única", "2x", "3x"};
                 int vezesParcela = JOptionPane.showOptionDialog(
                 null,
@@ -48,39 +58,59 @@ public class caixaRegistradora {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 parcelamento, parcelamento);
-                    if (vezesParcela ==JOptionPane.YES_OPTION) {
+                    if (vezesParcela ==JOptionPane.YES_OPTION) { //YES_OPTION = Parcela única
                         Double valorFinal = soma*0.95;
                         JOptionPane.showMessageDialog(null,"O valor final da compra é de R$"+ new DecimalFormat("0.00").format(valorFinal));
 
-                        String txtPagamento = JOptionPane.showInputDialog("Insira o valor para o pagamento");
-                        Double pagamento = Double.parseDouble(txtPagamento);
+                        Double pagamento = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor para o pagamento"));
                         Double troco = pagamento - valorFinal;
-                        JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        if (pagamento<valorFinal) {
+                            Double troco1 = troco*(-1);
+                            JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
+                        }
+                        else if (pagamento>valorFinal) {
+                            JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        }
                     }
-                    else if (vezesParcela ==JOptionPane.NO_OPTION) {
+                    else if (vezesParcela ==JOptionPane.NO_OPTION) { //NO_OPTION = 2x
                         Double valorParcela = soma/2.0;
                         JOptionPane.showMessageDialog(null,"O valor de cada parcela é de R$"+new DecimalFormat("0.00").format(valorParcela));
-                        String txtPagamento = JOptionPane.showInputDialog("Insira o valor para o pagamento");
-                        Double pagamento = Double.parseDouble(txtPagamento);
+                        Double pagamento = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor para o pagamento"));
                         Double troco = pagamento - valorParcela;
-                        JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        if (pagamento<valorParcela) {
+                            Double troco1 = troco*(-1);
+                            JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
+                        }
+                        else if (pagamento>valorParcela) {
+                            JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        }
                     }
-                    else{
-                        Double valorParcela = soma/3.0;
+                    else{ //CANCEL_OPTION = 3x
+                        Double valorParcela = soma/3.0; 
                         JOptionPane.showMessageDialog(null,"O valor de cada parcela é de R$"+new DecimalFormat("0.00").format(valorParcela));
-                        String txtPagamento = JOptionPane.showInputDialog("Insira o valor para o pagamento");
-                        Double pagamento = Double.parseDouble(txtPagamento);
+                        Double pagamento = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor para o pagamento"));
                         Double troco = pagamento - valorParcela;
-                        JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        if (pagamento<valorParcela) {
+                            Double troco1 = troco*(-1);
+                            JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
+                        }
+                        else if (pagamento>valorParcela) {
+                            JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                        }
                     } 
             }
-            else{
+            else{ // CANCEL_OPTION = Dinheiro
                 Double valorFinal = soma*0.9;
                 JOptionPane.showMessageDialog(null,"Ao pagar em dinheiro é dado um desconto de 10%\n O valor final da compra é de R$"+ new DecimalFormat("0.00").format(valorFinal));
-                String txtPagamento = JOptionPane.showInputDialog("Insira o valor para o pagamento");
-                Double pagamento = Double.parseDouble(txtPagamento);
+                Double pagamento = Double.parseDouble(JOptionPane.showInputDialog("Insira o valor para o pagamento"));
                 Double troco = pagamento - valorFinal;
-                JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                if (pagamento<valorFinal) {
+                    Double troco1 = troco*(-1);
+                    JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
+                }
+                else if (pagamento>valorFinal) {
+                    JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
+                }
             }
     }
 }
