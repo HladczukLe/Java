@@ -44,7 +44,7 @@ public class caixaRegistradora {
                     Double troco1 = troco*(-1);
                     JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
                 }
-                else if (pagamento>valorParcela) {
+                else if (pagamento>=valorParcela) {
                     JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
                 }
             }
@@ -68,7 +68,7 @@ public class caixaRegistradora {
                             Double troco1 = troco*(-1);
                             JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
                         }
-                        else if (pagamento>valorFinal) {
+                        else if (pagamento>=valorFinal) {
                             JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
                         }
                     }
@@ -81,7 +81,7 @@ public class caixaRegistradora {
                             Double troco1 = troco*(-1);
                             JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
                         }
-                        else if (pagamento>valorParcela) {
+                        else if (pagamento>=valorParcela) {
                             JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
                         }
                     }
@@ -94,7 +94,7 @@ public class caixaRegistradora {
                             Double troco1 = troco*(-1);
                             JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
                         }
-                        else if (pagamento>valorParcela) {
+                        else if (pagamento>=valorParcela) {
                             JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
                         }
                     } 
@@ -108,7 +108,7 @@ public class caixaRegistradora {
                     Double troco1 = troco*(-1);
                     JOptionPane.showMessageDialog(null,"Você está devendo R$"+new DecimalFormat("0.00").format(troco1));
                 }
-                else if (pagamento>valorFinal) {
+                else if (pagamento>=valorFinal) {
                     JOptionPane.showMessageDialog(null,"O troco é de R$"+ new DecimalFormat("0.00").format(troco));
                 }
             }
