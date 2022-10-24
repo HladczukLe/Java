@@ -13,7 +13,7 @@ public class Exercicio5 {
         for (fahrenheit=0.0; fahrenheit<=300;fahrenheit+=30) {
             celsius = (fahrenheit-32)*(5.0f/9.0f);
             
-            System.out.println("Celsius "+new DecimalFormat("#,##0.00°C").format(celsius)+ "\nFahrenheit: "+fahrenheit+"°F");
+            System.out.println("Celsius "+new DecimalFormat("#,##0.00°C").format(celsius)+ "\tFahrenheit: "+fahrenheit+"°F");
         }
     }
 }
