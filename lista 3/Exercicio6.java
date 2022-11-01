@@ -1,5 +1,3 @@
-package lista3;
-
 import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
