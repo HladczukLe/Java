@@ -1,8 +1,10 @@
 package lista4;
-
 import java.text.DecimalFormat;
-
 import javax.swing.JOptionPane;
+
+/*
+ * Escreva um programa que auxilie geógrafos a estimarem o tempo que uma determinada população leva para chegar a uma determinada quantidade de habitantes, dado um crescimento populacional. O programa deve receber do usuário a população inicial da cidade (P0), a taxa de crescimento populacional (t) e o tamanho da população que se espera chegar(Px). E então deve calcular quantos anos ele levará para chegar a este tamanho da população (x). Para realizar esta tarefa, é sugerido usar a fórmula: x = log(Px/P0)/log(1 + t)
+ */
 
 public class Exercicio5 {
     public static void main(String[] args) {
