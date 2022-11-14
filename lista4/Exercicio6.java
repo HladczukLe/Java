@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
- * Exercicio6
+ * Escreva um programa que gere uma senha aleatória composta por 6 dígitos
  */
 public class Exercicio6 {
     public static void main(String[] args) {
